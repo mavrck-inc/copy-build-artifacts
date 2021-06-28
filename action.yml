@@ -1,0 +1,30 @@
+# action.yml
+name: 'Copy Git Meta'
+description: 'A simple Action copying created by https://github.com/mavrck-inc/git-meta git meta and template files to S3'
+inputs:
+  version:
+    description: 'The version of the service'
+    required: true
+  name:
+    description: 'The name of the service'
+    required: true
+  bucket:
+    description: 'The name of the bucket to put the files into'
+    required: true
+    default: mavrck-builds
+  gitmeta:
+    description: 'Git meta file path'
+    required: true
+    default: git-meta
+  meta:
+    description: 'Meta file path'
+    required: true
+    default: meta.yml
+  metrics:
+    description: 'Metrics file path'
+    required: true
+    default: metrics.yml
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
