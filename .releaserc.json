@@ -9,7 +9,7 @@
         }],
 
         ["@semantic-release/github", {
-            "assets": ["docs/CHANGELOG.md"]
+            "assets": ["docs/CHANGELOG.md", "package-lock.json"]
         }],
         ["@semantic-release/git", {
             "assets": ["docs/CHANGELOG.md", "dist/**", "package-lock.json"],
