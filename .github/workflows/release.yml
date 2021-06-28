@@ -6,19 +6,13 @@ on:
 
 jobs:
   # unit tests
-  units:
+  release:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
 
     - name: Test and prepare distribution
       run: npm install && npm run all
-
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
 
     - name: Semantic Release
       uses: cycjimmy/semantic-release-action@v2
