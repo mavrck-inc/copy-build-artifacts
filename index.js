@@ -26,6 +26,8 @@ function execShellCommand(cmd) {
 
     console.log(`\n\tService name: ${serviceName}\n\tBucket: ${bucket}\n\tVersion: ${version}\n\tGitmeta: ${gitmeta}\n\tMeta: ${meta}\n\tMetrics: ${metrics}\n\tTemplateOutput: ${templateOutput}`)
 
+    console.log("Copy to S3");
+
     if (gitmeta) {
       console.log(await execShellCommand(`aws s3 cp ${gitmeta} s3://${s3Path}/gitMeta`));
     }
