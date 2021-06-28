@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Test and prepare distribution
-      run: npm run all
+      run: npm install && npm run all
 
     - name: Push changes
       uses: ad-m/github-push-action@master
