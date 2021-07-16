@@ -18,8 +18,11 @@ function execShellCommand(cmd) {
     const bucket = core.getInput('bucket');
     const version = process.env.VERSION;
     const gitmeta = core.getInput('gitmeta');
+    const gitmetaOutput = core.getInput('gitmetaOutput');
     const meta = core.getInput('meta');
+    const metaOutput = core.getInput('metaOutput');
     const metrics = core.getInput('metrics');
+    const metricsOutput = core.getInput('metricsOutput');
     const templateOutput = core.getInput('templateOutput');
     const template = core.getInput('template');
     const s3Path = `${bucket}/${serviceName}/${version}`;
@@ -28,16 +31,16 @@ function execShellCommand(cmd) {
 
     console.log("Copy to S3");
 
-    if (gitmeta) {
-      console.log(await execShellCommand(`aws s3 cp ${gitmeta} s3://${s3Path}/gitMeta`));
+    if (gitmeta && gitmetaOutput) {
+      console.log(await execShellCommand(`aws s3 cp ${gitmeta} s3://${s3Path}/${gitmetaOutput}`));
     }
 
-    if (meta) {
-      console.log(await execShellCommand(`aws s3 cp ${meta} s3://${s3Path}/meta.yml`));
+    if (meta && metaOutput) {
+      console.log(await execShellCommand(`aws s3 cp ${meta} s3://${s3Path}/${metaOutput}`));
     }
 
-    if (metrics) {
-      console.log(await execShellCommand(`aws s3 cp ${metrics} s3://${s3Path}/metrics.yml`));
+    if (metrics && metricsOutput) {
+      console.log(await execShellCommand(`aws s3 cp ${metrics} s3://${s3Path}/${metricsOutput}`));
     }
 
     if (templateOutput && template) {

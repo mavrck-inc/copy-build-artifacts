@@ -16,12 +16,24 @@ inputs:
     description: 'Git meta file path'
     required: true
     default: git-meta
+  gitmetaOutput:
+    description: 'Git meta output file path'
+    required: true
+    default: gitMeta
   meta:
     description: 'Meta file path'
     required: true
     default: meta.yml
+  metaOutput:
+    description: 'Meta output file path'
+    required: true
+    default: meta.yml
   metrics:
     description: 'Metrics file path'
+    required: true
+    default: metrics.yml
+  metricsOutput:
+    description: 'Metrics output file path'
     required: true
     default: metrics.yml
   templateOutput:
