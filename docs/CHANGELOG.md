@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/mavrck-inc/copy-git-meta/compare/1.0.0...1.1.0) (2021-07-16)
+
+
+### Features
+
+* **options:** Add output options for all files ([5e4bd9c](https://github.com/mavrck-inc/copy-git-meta/commit/5e4bd9c9c88dca486c77890074a684a7c39010c4))
+
 # 1.0.0 (2021-06-28)
 
 
