@@ -53,6 +53,10 @@ function execShellCommand(cmd) {
     if (templateOutput && template) {
       console.log(await execShellCommand(`aws s3 cp ${template} s3://${s3Path}/${templateOutput}`));
     }
+
+    if (terraform && terraformOutput) {
+        console.log(await execShellCommand(`aws s3 cp ${terraform} s3://${s3Path}/${terraformOutput}`));
+    }
   } catch (error) {
     core.setFailed(error.message);
   }
