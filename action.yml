@@ -44,6 +44,14 @@ inputs:
     description: 'Template input file'
     required: true
     default: packaged.yaml
+  terraform:
+    description: 'Terraform zip file path'
+    required: true
+    default: terraform.zip
+  terraformOutput:
+    description: 'Terraform zip output file path'
+    required: true
+    default: terraform.zip
 
 runs:
   using: 'node12'
