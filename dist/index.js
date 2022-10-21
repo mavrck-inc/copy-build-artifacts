@@ -32,6 +32,8 @@ function execShellCommand(cmd) {
     const metricsOutput = core.getInput('metricsOutput');
     const templateOutput = core.getInput('templateOutput');
     const template = core.getInput('template');
+    const terraform = core.getInput('terraform');
+    const terraformOutput = core.getInput('terraformOutput');
     const s3Path = `${bucket}/${serviceName}/${version}`;
 
     console.log(`\n\tService name: ${serviceName}\n\tBucket: ${bucket}\n\tVersion: ${version}\n\tGitmeta: ${gitmeta}\n\tMeta: ${meta}\n\tMetrics: ${metrics}\n\tTemplateOutput: ${templateOutput}`)
