@@ -20,6 +20,7 @@ jobs:
       uses: cycjimmy/semantic-release-action@v3
       id: semantic
       with:
+        semantic_version: 17
         extra_plugins: |
           @semantic-release/release-notes-generator
           @semantic-release/changelog
