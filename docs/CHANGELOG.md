@@ -1,3 +1,11 @@
+## [1.2.3](https://github.com/mavrck-inc/copy-git-meta/compare/1.2.2...1.2.3) (2023-05-24)
+
+
+### Bug Fixes
+
+* **release:** build a new version of copy ([470fc8a](https://github.com/mavrck-inc/copy-git-meta/commit/470fc8a8d81f55128cc4823b7d57a3a6033e69b9))
+* **release:** build a new version of copy ([39c4529](https://github.com/mavrck-inc/copy-git-meta/commit/39c452922c37616682fc23cdbed766931f107aab))
+
 ## [1.2.2](https://github.com/mavrck-inc/copy-git-meta/compare/1.2.1...1.2.2) (2023-05-24)
 
 
