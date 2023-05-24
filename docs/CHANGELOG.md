@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/mavrck-inc/copy-git-meta/compare/1.2.1...1.2.2) (2023-05-24)
+
+
+### Bug Fixes
+
+* **release:** This push is to release a new version. ([0225b5e](https://github.com/mavrck-inc/copy-git-meta/commit/0225b5efc67bd44b886bce4cfaacbb72bd296ee5))
+
 ## [1.2.1](https://github.com/mavrck-inc/copy-git-meta/compare/1.2.0...1.2.1) (2023-05-17)
 
 
