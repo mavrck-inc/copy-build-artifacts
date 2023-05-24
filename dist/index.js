@@ -2858,7 +2858,7 @@ function execShellCommand(cmd) {
   try {
     const serviceName = core.getInput('name');
     const bucket = core.getInput('bucket');
-    const version = process.env.VERSION;
+    const version = core.getInput('version');
     const gitmeta = core.getInput('gitmeta');
     const gitmetaOutput = core.getInput('gitmetaOutput');
     const meta = core.getInput('meta');
