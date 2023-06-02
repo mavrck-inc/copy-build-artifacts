@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/mavrck-inc/copy-git-meta/compare/1.2.3...1.2.4) (2023-06-02)
+
+
+### Bug Fixes
+
+* **release:** update version for new svc bucket ([c35c01e](https://github.com/mavrck-inc/copy-git-meta/commit/c35c01e173e76556b067199550492d1ab4616c56))
+
 ## [1.2.3](https://github.com/mavrck-inc/copy-git-meta/compare/1.2.2...1.2.3) (2023-05-24)
 
 
