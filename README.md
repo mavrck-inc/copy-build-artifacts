@@ -24,6 +24,9 @@ $ npm test
 ...
 ```
 
+## Release new version
+Title PR with fix(release): YOUR_TITLE_HERE
+
 ## Change action.yml
 
 The action.yml defines the inputs and output for your action.
