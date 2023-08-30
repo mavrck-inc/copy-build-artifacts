@@ -30,10 +30,9 @@ function execShellCommand(cmd) {
     const terraformOutput = core.getInput('terraformOutput');
     const s3Path = `${bucket}/${serviceName}/${version}`;
 
+    let bucketTagBranch = "BRANCH";
     if (gitmeta && ( (gitmeta.headRef == "main") || (gitmeta.headRef == "master") ) ) {
-      const bucketTagBranch = "MAIN";
-    } else {
-      const bucketTagBranch = "BRANCH";
+      bucketTagBranch = "MAIN";
     }
 
     console.log(`\n\tService name: ${serviceName}\n\tBucket: ${bucket}\n\tBucketTagBranch: ${bucketTagBranch}\n\tVersion: ${version}\n\tGitmeta: ${gitmeta}\n\tMeta: ${meta}\n\tMetrics: ${metrics}\n\tTemplateOutput: ${templateOutput}\n\tTerraform: ${terraform}\n\tTerraformOutput: ${terraformOutput}`)
