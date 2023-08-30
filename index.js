@@ -16,6 +16,7 @@ function execShellCommand(cmd) {
   try {
     const serviceName = core.getInput('name');
     const bucket = core.getInput('bucket');
+    const tempBucket = "mavrck-temp-build-artifacts"
     const version = core.getInput('version');
     const gitmeta = core.getInput('gitmeta');
     const gitmetaOutput = core.getInput('gitmetaOutput');
@@ -29,12 +30,19 @@ function execShellCommand(cmd) {
     const terraformOutput = core.getInput('terraformOutput');
     const s3Path = `${bucket}/${serviceName}/${version}`;
 
-    console.log(`\n\tService name: ${serviceName}\n\tBucket: ${bucket}\n\tVersion: ${version}\n\tGitmeta: ${gitmeta}\n\tMeta: ${meta}\n\tMetrics: ${metrics}\n\tTemplateOutput: ${templateOutput}\n\tTerraform: ${terraform}\n\tTerraformOutput: ${terraformOutput}`)
+    const bucketTagBranch = "BRANCH";
+    if (gitmeta && ( (gitmeta.headRef == "main") || (gitmeta.headRef == "master") ) ) {
+      bucketTagBranch = "MAIN";
+    }
+
+    console.log(`\n\tService name: ${serviceName}\n\tBucket: ${bucket}\n\tBucketTagBranch: ${bucketTagBranch}\n\tVersion: ${version}\n\tGitmeta: ${gitmeta}\n\tMeta: ${meta}\n\tMetrics: ${metrics}\n\tTemplateOutput: ${templateOutput}\n\tTerraform: ${terraform}\n\tTerraformOutput: ${terraformOutput}`)
 
     console.log("Copy to S3");
 
     if (gitmeta && gitmetaOutput) {
       console.log(await execShellCommand(`aws s3 cp ${gitmeta} s3://${s3Path}/${gitmetaOutput}`));
+      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key "s3://${s3Path}/${gitmetaOutput}" \
+        --tagging "branch=${bucketTagBranch}" --body ${gitmeta}`));
     }
 
     if (meta && metaOutput) {
