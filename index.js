@@ -31,7 +31,7 @@ function execShellCommand(cmd) {
     // const s3Path = `${bucket}/${serviceName}/${version}`;
 
     const gitMetaString = gitmeta.toString();
-    const bucketTagBranch = (gitmeta && ( (gitMetaString.includes("headRef=MVKPLTFRM-1292-s3-gitmeta")) || (gitMetaString.includes("headRef=main")) || (gitMetaString.includes("headRef=master")) ) ) ? "MAIN" : "BRANCH";
+    const bucketTagBranch = (gitmeta && ( (gitMetaString.includes("headRef=MVKPLTFRM-1292-s3-gitmeta")) || (gitMetaString.includes("headRef=main")) || (gitMetaString.includes("headRef=master")) ) ) ? "MAIN" : gitMetaString;
 
     console.log(`\n\tService name: ${serviceName}\n\tBucket: ${bucket}\n\tBucketTagBranch: ${bucketTagBranch}\n\tVersion: ${version}\n\tGitmeta: ${gitmeta}\n\tMeta: ${meta}\n\tMetrics: ${metrics}\n\tTemplateOutput: ${templateOutput}\n\tTerraform: ${terraform}\n\tTerraformOutput: ${terraformOutput}`)
 
