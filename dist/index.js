@@ -2882,7 +2882,7 @@ function execShellCommand(cmd) {
     if (gitmeta && gitmetaOutput) {
       // console.log(await execShellCommand(`aws s3 cp ${gitmeta} s3://${s3Path}/${gitmetaOutput}`));
       console.log(await execShellCommand(`aws s3api put-object --bucket ${bucket} --key "${serviceName}/${version}/${gitmetaOutput}" \
-        --tagging "branch=${bucketTagBranch}" --body ${gitmeta}`));
+        --tagging "branch=${bucketTagBranch}, gitMeta=${gitmeta}" --body ${gitmeta}`));
     }
 
     if (meta && metaOutput) {
