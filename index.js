@@ -38,25 +38,25 @@ function execShellCommand(cmd) {
 
     if (gitmeta && gitmetaOutput) {
       console.log(await execShellCommand(`aws s3 cp ${gitmeta} s3://${s3Path}/${gitmetaOutput}`));
-      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key ${gitmetaOutput} \
+      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key "${serviceName}/${version}/${gitmetaOutput}" \
         --tagging "branch=${bucketTagBranch}" --body ${gitmeta}`));
     }
 
     if (meta && metaOutput) {
       console.log(await execShellCommand(`aws s3 cp ${meta} s3://${s3Path}/${metaOutput}`));
-      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key ${metaOutput} \
+      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key "${serviceName}/${version}/${metaOutput}" \
         --tagging "branch=${bucketTagBranch}" --body ${meta}`));
     }
 
     if (metrics && metricsOutput) {
       console.log(await execShellCommand(`aws s3 cp ${metrics} s3://${s3Path}/${metricsOutput}`));
-      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key ${metricsOutput} \
+      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key "${serviceName}/${version}/${metricsOutput}" \
         --tagging "branch=${bucketTagBranch}" --body ${metrics}`));
     }
 
     if (templateOutput && template) {
       console.log(await execShellCommand(`aws s3 cp ${template} s3://${s3Path}/${templateOutput}`));
-      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key ${templateOutput} \
+      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key "${serviceName}/${version}/${templateOutput}" \
         --tagging "branch=${bucketTagBranch}" --body ${template}`));
     }
 
