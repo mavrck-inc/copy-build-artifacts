@@ -2873,7 +2873,7 @@ function execShellCommand(cmd) {
     const terraformOutput = core.getInput('terraformOutput');
     // const s3Path = `${bucket}/${serviceName}/${version}`;
 
-    const bucketTagBranch = (gitbranch == "MVKPLTFRM-1292-s3-gitmeta") || (gitbranch == "main") || (gitbranch == "master") ? "MAIN" : "BRANCH";
+    const bucketTagBranch = (gitbranch == "main") || (gitbranch == "master") ? "MAIN" : "BRANCH";
 
     console.log(`\n\tService name: ${serviceName}\n\tBucket: ${bucket}\n\tBucketTagBranch: ${bucketTagBranch}\n\tVersion: ${version}\n\tGitmeta: ${gitmeta}\n\tGitBranch: ${gitbranch}\n\tMeta: ${meta}\n\tMetrics: ${metrics}\n\tTemplateOutput: ${templateOutput}\n\tTerraform: ${terraform}\n\tTerraformOutput: ${terraformOutput}`)
 
