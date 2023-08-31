@@ -2880,24 +2880,32 @@ function execShellCommand(cmd) {
 
     if (gitmeta && gitmetaOutput) {
       console.log(await execShellCommand(`aws s3 cp ${gitmeta} s3://${s3Path}/${gitmetaOutput}`));
-      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key "s3://${s3Path}/${gitmetaOutput}" \
+      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key ${gitmetaOutput} \
         --tagging "branch=${bucketTagBranch}" --body ${gitmeta}`));
     }
 
     if (meta && metaOutput) {
       console.log(await execShellCommand(`aws s3 cp ${meta} s3://${s3Path}/${metaOutput}`));
+      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key ${metaOutput} \
+        --tagging "branch=${bucketTagBranch}" --body ${meta}`));
     }
 
     if (metrics && metricsOutput) {
       console.log(await execShellCommand(`aws s3 cp ${metrics} s3://${s3Path}/${metricsOutput}`));
+      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key ${metricsOutput} \
+        --tagging "branch=${bucketTagBranch}" --body ${metrics}`));
     }
 
     if (templateOutput && template) {
       console.log(await execShellCommand(`aws s3 cp ${template} s3://${s3Path}/${templateOutput}`));
+      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key ${templateOutput} \
+        --tagging "branch=${bucketTagBranch}" --body ${template}`));
     }
 
     if (terraform && terraformOutput) {
-            console.log(await execShellCommand(`aws s3 cp ${terraform} s3://${s3Path}/${terraformOutput}`));
+      console.log(await execShellCommand(`aws s3 cp ${terraform} s3://${s3Path}/${terraformOutput}`));
+      console.log(await execShellCommand(`aws s3api put-object --bucket ${tempBucket} --key ${terraformOutput} \
+        --tagging "branch=${bucketTagBranch}" --body ${terraform}`));
     }
   } catch (error) {
     core.setFailed(error.message);
