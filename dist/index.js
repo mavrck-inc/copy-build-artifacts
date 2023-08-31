@@ -2858,7 +2858,7 @@ function execShellCommand(cmd) {
   try {
     const serviceName = core.getInput('name');
     const bucket = core.getInput('bucket');
-    const tempBucket = "mavrck-temp-build-artifacts"
+    const tempBucket = "mavrck-temp-build-artifacts";
     const version = core.getInput('version');
     const gitmeta = core.getInput('gitmeta');
     const gitmetaOutput = core.getInput('gitmetaOutput');
@@ -2872,11 +2872,7 @@ function execShellCommand(cmd) {
     const terraformOutput = core.getInput('terraformOutput');
     const s3Path = `${bucket}/${serviceName}/${version}`;
 
-    if (gitmeta && ( (gitmeta.headRef == "main") || (gitmeta.headRef == "master") ) ) {
-      const bucketTagBranch = "MAIN";
-    } else {
-      const bucketTagBranch = "BRANCH";
-    }
+    const bucketTagBranch = (gitmeta && ( (gitmeta.headRef == "main") || (gitmeta.headRef == "master") ) ) ? "MAIN" : "BRANCH";
 
     console.log(`\n\tService name: ${serviceName}\n\tBucket: ${bucket}\n\tBucketTagBranch: ${bucketTagBranch}\n\tVersion: ${version}\n\tGitmeta: ${gitmeta}\n\tMeta: ${meta}\n\tMetrics: ${metrics}\n\tTemplateOutput: ${templateOutput}\n\tTerraform: ${terraform}\n\tTerraformOutput: ${terraformOutput}`)
 
