@@ -2861,6 +2861,7 @@ function execShellCommand(cmd) {
     // const tempBucket = "mavrck-temp-build-artifacts";
     const version = core.getInput('version');
     const gitmeta = core.getInput('gitmeta');
+    const gitbranch = core.getInput('git_branch');
     const gitmetaOutput = core.getInput('gitmetaOutput');
     const meta = core.getInput('meta');
     const metaOutput = core.getInput('metaOutput');
@@ -2872,9 +2873,9 @@ function execShellCommand(cmd) {
     const terraformOutput = core.getInput('terraformOutput');
     // const s3Path = `${bucket}/${serviceName}/${version}`;
 
-    const bucketTagBranch = (gitmeta && ( (gitmeta.includes("headRef=main")) || (gitmeta.includes("headRef=master")) ) ) ? "MAIN" : "BRANCH";
+    const bucketTagBranch = (gitbranch == "main") || (gitbranch == "master") ? "MAIN" : "BRANCH";
 
-    console.log(`\n\tService name: ${serviceName}\n\tBucket: ${bucket}\n\tBucketTagBranch: ${bucketTagBranch}\n\tVersion: ${version}\n\tGitmeta: ${gitmeta}\n\tMeta: ${meta}\n\tMetrics: ${metrics}\n\tTemplateOutput: ${templateOutput}\n\tTerraform: ${terraform}\n\tTerraformOutput: ${terraformOutput}`)
+    console.log(`\n\tService name: ${serviceName}\n\tBucket: ${bucket}\n\tBucketTagBranch: ${bucketTagBranch}\n\tVersion: ${version}\n\tGitmeta: ${gitmeta}\n\tGitBranch: ${gitbranch}\n\tMeta: ${meta}\n\tMetrics: ${metrics}\n\tTemplateOutput: ${templateOutput}\n\tTerraform: ${terraform}\n\tTerraformOutput: ${terraformOutput}`)
 
     console.log("Copy to S3");
 
