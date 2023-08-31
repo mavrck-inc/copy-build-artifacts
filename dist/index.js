@@ -2904,7 +2904,7 @@ function execShellCommand(cmd) {
 
     if (terraform && terraformOutput) {
       // console.log(await execShellCommand(`aws s3 cp ${terraform} s3://${s3Path}/${terraformOutput}`));
-      console.log(await execShellCommand(`aws s3api put-object --bucket ${bucket} --key ${terraformOutput} \
+      console.log(await execShellCommand(`aws s3api put-object --bucket ${bucket} --key ${serviceName}/${version}/${terraformOutput} \
         --tagging "branch=${bucketTagBranch}" --body ${terraform}`));
     }
   } catch (error) {
