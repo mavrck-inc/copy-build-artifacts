@@ -16,6 +16,10 @@ inputs:
     description: 'Git meta file path'
     required: true
     default: git-meta
+  git_branch:
+    description: 'Git branch for tagging'
+    required: true
+    default: branch
   gitmetaOutput:
     description: 'Git meta output file path'
     required: true

@@ -2861,6 +2861,7 @@ function execShellCommand(cmd) {
     // const tempBucket = "mavrck-temp-build-artifacts";
     const version = core.getInput('version');
     const gitmeta = core.getInput('gitmeta');
+    const gitbranch = core.getInput('git_branch');
     const gitmetaOutput = core.getInput('gitmetaOutput');
     const meta = core.getInput('meta');
     const metaOutput = core.getInput('metaOutput');
@@ -2872,8 +2873,7 @@ function execShellCommand(cmd) {
     const terraformOutput = core.getInput('terraformOutput');
     // const s3Path = `${bucket}/${serviceName}/${version}`;
 
-    const gitMetaString = gitmeta.toString();
-    const bucketTagBranch = (gitmeta && ( (gitMetaString.includes("headRef=MVKPLTFRM-1292-s3-gitmeta")) || (gitMetaString.includes("headRef=main")) || (gitMetaString.includes("headRef=master")) ) ) ? "MAIN" : gitMetaString;
+    const bucketTagBranch = (gitbranch == "headRef=MVKPLTFRM-1292-s3-gitmeta") || (gitbranch == "headRef=main") || (gitbranch == "headRef=master") ? "MAIN" : "BRANCH";
 
     console.log(`\n\tService name: ${serviceName}\n\tBucket: ${bucket}\n\tBucketTagBranch: ${bucketTagBranch}\n\tVersion: ${version}\n\tGitmeta: ${gitmeta}\n\tMeta: ${meta}\n\tMetrics: ${metrics}\n\tTemplateOutput: ${templateOutput}\n\tTerraform: ${terraform}\n\tTerraformOutput: ${terraformOutput}`)
 
@@ -2882,7 +2882,7 @@ function execShellCommand(cmd) {
     if (gitmeta && gitmetaOutput) {
       // console.log(await execShellCommand(`aws s3 cp ${gitmeta} s3://${s3Path}/${gitmetaOutput}`));
       console.log(await execShellCommand(`aws s3api put-object --bucket ${bucket} --key "${serviceName}/${version}/${gitmetaOutput}" \
-        --tagging "branch=${bucketTagBranch}, gitMeta=${gitmeta}" --body ${gitmeta}`));
+        --tagging "branch=${bucketTagBranch}" --body ${gitmeta}`));
     }
 
     if (meta && metaOutput) {
